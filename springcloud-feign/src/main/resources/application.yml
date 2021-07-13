@@ -1,0 +1,31 @@
+server:
+  port: 8081
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: feign-client
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: false #是否对请求进行GZIP压缩
+      mime-types: text/xml,application/xml,application/json #指定压缩的请求数据类型
+      min-request-size: 2048 #超过该大小的请求会被压缩
+    response:
+      enabled: false #是否对响应进行GZIP压缩
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    com.springcloud.feign.service.ProviderService: DEBUG
+hystrix:
+  comm

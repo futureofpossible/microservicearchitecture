@@ -1,0 +1,16 @@
+spring:
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh #http://localhost:8881/actuator/bus-refresh 如果传统的做法，需要重启服务，才能达到配置文件的更新。 由消息总线向其他服务传递，从而使整个微服务集群都达到更新配置文件。
