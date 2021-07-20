@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "eureka-client", fallback = ProviderServiceImpl.class,configuration = FeignConfiguration.class)
+@FeignClient(contextId = "providerService", value = "eureka-client", fallback = ProviderServiceImpl.class, configuration = FeignConfiguration.class)
 public interface ProviderService {
     @RequestMapping(value = "/provider/wantToDone", method = RequestMethod.GET)
     public String wantToDone(@RequestParam("name") String name);

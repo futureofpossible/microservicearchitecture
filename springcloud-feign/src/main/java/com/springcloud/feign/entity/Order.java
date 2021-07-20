@@ -8,9 +8,6 @@ import lombok.ToString;
 import java.io.Serializable;
 
 @Data
-@Getter
-@Setter
-@ToString
 public class Order implements Serializable {
     private String orderId;
 }
