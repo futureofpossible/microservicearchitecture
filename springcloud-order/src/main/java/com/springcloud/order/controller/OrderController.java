@@ -15,7 +15,9 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping(value = "/order")
 public class OrderController {
-    public static final String PAYMENT_URL = "http://localhost:8001";
+//    public static final String PAYMENT_URL = "http://localhost:8001";
+//    public static final String PAYMENT_URL = "http://localhost:8002";
+    public static final String PAYMENT_URL = "http://SPRINGCLOUD-PAYMENTSERVICE";
     @Autowired
     private RestTemplate restTemplate;
 

@@ -25,6 +25,12 @@
         <module>springcloud-order</module>
         <module>springcloud-payment</module>
         <module>springcloud-common</module>
+        <module>springcloud-nacos</module>
+        <module>springcloud-consul</module>
+        <module>springcloud-zookeeper</module>
+        <module>springcloud-eureka-server2</module>
+        <module>springcloud-eureka-server3</module>
+        <module>springcloud-payment2</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -82,25 +88,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.spring.boot.version}</version>
         </dependency>
     </dependencies>
 

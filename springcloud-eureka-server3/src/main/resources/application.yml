@@ -1,0 +1,20 @@
+server:
+  port: 8763
+eureka:
+  instance:
+    hostname: peer3
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+  server:
+    enable-self-preservation: true
+    renewal-percent-threshold: 0.85
+    eviction-interval-timer-in-ms: 60000
+spring:
+  application:
+    name: eureka-server3
+#    http://localhost:8763/ http://peer3:8763/

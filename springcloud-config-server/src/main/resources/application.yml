@@ -19,7 +19,7 @@ spring:
           #search-locations: file:D:\config
           search-locations: classpath:/config
         #git:
-          #uri: https://github.com/futureofpossible/repo.git #配置git仓库地址https://github.com/futureofpossible/repo.git
+          #uri: https://github.com/futureofpossible/microservicearchitecture.git/ #配置git仓库地址https://github.com/futureofpossible/microservicearchitecture.git/
           #search-paths: /** #配置仓库路径
           #username: 342707539@qq.com #访问git仓库的用户名
           #password: bing520mei #访问git仓库的用户密码
