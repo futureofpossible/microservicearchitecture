@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: springcloud-consul-provider
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        register-health-check: true
+        enabled: true
+        register: true
+        health-check-interval: 15s
+#        instance-id:
+server:
+  port: 9003

@@ -26,11 +26,13 @@
         <module>springcloud-payment</module>
         <module>springcloud-common</module>
         <module>springcloud-nacos</module>
-        <module>springcloud-consul</module>
-        <module>springcloud-zookeeper</module>
+        <module>springcloud-consul-provider</module>
+        <module>springcloud-zookeeper-provider</module>
         <module>springcloud-eureka-server2</module>
         <module>springcloud-eureka-server3</module>
         <module>springcloud-payment2</module>
+        <module>springcloud-zookeeper-consumer</module>
+        <module>springcloud-consul-consumer</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: springcloud-zookeeper-consumer
+  cloud:
+    zookeeper:
+      connect-string: 192.168.1.24:2181
+server:
+  port: 9002

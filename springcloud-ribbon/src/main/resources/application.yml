@@ -14,18 +14,27 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
-eureka-client: #指定服务名称
-  ribbon:
-    ConnectTimeout: 1000 #请求连接时间
-    ReadTimeout: 2000 #请求读取时间
-    OkToRetryOnAllOperations: true #对所有操作都允许重试
-    MaxAutoRetriesNextServer: 2 #切换实例的重试最大个数
-    MaxAutoRetries: 2 #切换实例的重试最大次数
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #负载均衡策略算法 随机
+#eureka-client: #指定服务名称
+#  ribbon:
+#    ConnectTimeout: 1000 #请求连接时间
+#    ReadTimeout: 2000 #请求读取时间
+#    OkToRetryOnAllOperations: true #对所有操作都允许重试
+#    MaxAutoRetriesNextServer: 2 #切换实例的重试最大个数
+#    MaxAutoRetries: 2 #切换实例的重试最大次数
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #负载均衡策略算法 随机
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #轮询
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule #重试
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule #响应速度越快的实例选择权重越大，越容易被选择
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule #选择并发较小的实例
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.AvailabilityFilteringRule #先过滤掉故障实例，再选择并发较小的实例
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer #采用双重过滤，同时过滤不是同一区域的实例和故障实例，选择并发较小的实例
-    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl #看服务是否存活会增加请求时间
+#    NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl #看服务是否存活会增加请求时间
+
+#  Bean Type	              Bean Name	                Class Name
+#  IClientConfig           ribbonClientConfig        DefaultClientConfigImpl
+#  IRule                   ribbonRule                ZoneAvoidanceRule
+#  IPing                   ribbonPing                DummyPing
+#  ServerList<Server>      ribbonServerList          ConfigurationBasedServerList
+#  ServerListFilter<Server>ribbonServerListFilter    ZonePreferenceServerListFilter
+#  ILoadBalancer           ribbonLoadBalancer        ZoneAwareLoadBalancer
+#  ServerListUpdater       ribbonServerListUpdater   PollingServerListUpdater

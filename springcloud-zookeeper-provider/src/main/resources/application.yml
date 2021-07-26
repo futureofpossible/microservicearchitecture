@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: springcloud-zookeeper-provider
+  cloud:
+    zookeeper:
+      connect-string: 192.168.1.24:2181 #注册到Zookeeper的地址
+      discovery:
+        register: true
+        enabled: true #是否启动服务注册
+#        root: services #zk根节点名称,默认/services
+#        instance-id: 1 #zk唯一id的标识 轻重缓急
+#  ls /services
+#  ls /services/springcloud-zookeeper
+#  get /services/springcloud-zookeeper/a50ddb87-6fbc-4e39-8418-fd55ac1668f9
+#  [zk: localhost:2181(CONNECTED) 9] get /services/springcloud-zookeeper/a50ddb87-6fbc-4e39-8418-fd55ac1668f9
+#  {"name":"springcloud-zookeeper","id":"a50ddb87-6fbc-4e39-8418-fd55ac1668f9","address":"DESKTOP-TNH31EN","port":9001,"sslPort":null,"payload":{"@class":"org.springframework.cloud.zookeeper.discovery.ZookeeperInstance","id":"application-1","name":"springcloud-zookeeper","metadata":{"instance_status":"UP"}},"registrationTimeUTC":1627257723319,"serviceType":"DYNAMIC","uriSpec":{"parts":[{"value":"scheme","variable":true},{"value":"://","variable":false},{"value":"address","variable":true},{"value":":","variable":false},{"value":"port","variable":true}]}}
+server:
+  port: 9001
