@@ -38,9 +38,14 @@ public class PayController {
         Payment payment = payService.getPaymentById(id);
         CommonResult<Payment> commonResult = new CommonResult<>();
         if (payment != null) {
-            return new CommonResult(200, "查询成功", payment);
+            return new CommonResult(200, "查询成功,访问服务端口为:" + serverPort, payment);
         } else {
-            return new CommonResult(200, "没有对应记录", null);
+            return new CommonResult(200, "没有对应记录,访问服务端口为:" + serverPort, null);
         }
+    }
+
+    @RequestMapping(value = "/getServerPort")
+    public String getServerPort() {
+        return serverPort;
     }
 }

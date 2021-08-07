@@ -1,5 +1,7 @@
 server:
   port: 8888
+  tomcat:
+    uri-encoding: UTF-8
 eureka:
   client:
     register-with-eureka: true
@@ -7,28 +9,46 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 spring:
-  application:
-    name: config-server
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        native:
+        #native:
           #配置文件所在目录，classpath（类路径）和（系统文件路径） file两种
           #search-locations: file:D:\config
-          search-locations: classpath:/config
-        #git:
-          #uri: https://github.com/futureofpossible/microservicearchitecture.git/ #配置git仓库地址https://github.com/futureofpossible/microservicearchitecture.git/
-          #search-paths: /** #配置仓库路径
+          #search-locations: classpath:/config
+        git:
+          uri: https://github.com/futureofpossible/repo #配置git仓库地址https://github.com/futureofpossible/microservicearchitecture.git/
+          search-paths: /repo #配置仓库路径
           #username: 342707539@qq.com #访问git仓库的用户名
           #password: bing520mei #访问git仓库的用户密码
           #skip-ssl-validation: true
-          #default-label: main
+          default-label: main
       #label: main #配置仓库的分支 master
       #Cannot clone or checkout repository: https://github.com/futureofpossible http://localhost:8888/config-server/dev
-#  /{application}/{profile}[/{label}]
+  application:
+    name: config-server
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+#  profiles:
+#    active: native
+#  /{application}/{profile}[/{label}] http://localhost:8888/application/test/main
 #  /{application}-{profile}.yml
 #  /{label}/{application}-{profile}.yml
-#  /{application}-{profile}.properties
-#  /{label}/{application}-{profile}.properties
+#  /{application}-{profile}.properties http://localhost:8888/application-test.properties
+#  /{label}/{application}-{profile}.properties http://localhost:8888/main/application-pro.properties
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"

@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableHystrix
-@RibbonClient(name = "SPRINGCLOUD-PAYMENTSERVICE",configuration = MyRule.class)
+//@RibbonClient(name = "SPRINGCLOUD-PAYMENTSERVICE",configuration = MyRule.class)
 public class RibbonClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(RibbonClientApplication.class,args);

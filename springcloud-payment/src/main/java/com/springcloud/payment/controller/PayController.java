@@ -5,6 +5,7 @@ import com.springcloud.common.entity.Payment;
 import com.springcloud.payment.service.PayService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -18,6 +19,7 @@ import java.util.List;
 public class PayController {
     //    private static final Logger logger = Logger.getLogger(PayController.class);
     @Autowired
+    @Qualifier("payServiceImpl")
     private PayService payService;
     @Value("${server.port}")
     private String serverPort;
@@ -44,10 +46,16 @@ public class PayController {
         Payment payment = payService.getPaymentById(id);
         CommonResult<Payment> commonResult = new CommonResult<>();
         if (payment != null) {
-            return new CommonResult(200, "查询成功", payment);
+            return new CommonResult(200, "查询成功,访问服务端口为:" + serverPort, payment);
         } else {
-            return new CommonResult(200, "没有对应记录", null);
+            return new CommonResult(200, "没有对应记录,访问服务端口为:" + serverPort, null);
         }
+    }
+
+    @GetMapping(value = "/getPayments")
+    public List<Payment> getPayments() {
+        List<Payment> payments = payService.getPayments();
+        return payments;
     }
 
     @RequestMapping(value = "/discovery")
@@ -61,5 +69,20 @@ public class PayController {
             log.info(instance.getServiceId() + "," + instance.getInstanceId() + "," + instance.getHost() + "," + instance.getPort() + "," + instance.getUri());
         }
         return this.discoveryClient;
+    }
+
+    @RequestMapping(value = "/delay")
+    public String delay() {
+        /*try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+        return payService.payTimeout();
+    }
+
+    @RequestMapping(value = "/getServerPort")
+    public String getServerPort() {
+        return serverPort;
     }
 }

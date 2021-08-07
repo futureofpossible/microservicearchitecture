@@ -9,6 +9,10 @@
         select * from payment where id=#{id}
     </select>
 
+    <select id="getPayments" resultMap="BaseResultMap">
+        select * from payment
+    </select>
+
     <insert id="save" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
         insert into payment(serial) values(#{serial})
     </insert>

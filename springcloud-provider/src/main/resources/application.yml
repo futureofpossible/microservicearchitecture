@@ -6,10 +6,11 @@ eureka:
     fetch-registry: true #表示客户端是否从 Eureka Server 获取实例注册信息。
     service-url:
       defaultZone: http://localhost:8761/eureka/ #表示客户端需要注册的 Eureka Server 的地址。
+    registry-fetch-interval-seconds: 30 #拉取服务注册表的间隔
   instance:
-    lease-expiration-duration-in-seconds: 90 #表示 Eureka Server 在接收到上一个心跳之后等待下一个心跳的秒数（默认 90 秒），若不能在指定时间内收到心跳，则移除此实例，并禁止此实例的流量。
-    lease-renewal-interval-in-seconds: 30 #表示 Eureka Client 向 Eureka Server 发送心跳的频率（默认 30 秒），如果在 lease-expiration-duration-in-seconds 指定的时间内未收到心跳，则移除该实例。
-    #instance-id: 表示实例在注册中心注册的唯一ID。
+    lease-expiration-duration-in-seconds: 90 #表示 Eureka Server 在接收到上一个心跳之后等待下一个心跳的秒数（默认 90 秒），若不能在指定时间内收到心跳，则移除此实例，并禁止此实例的流量。UP->DOWN 如果超过90秒没检测到，视为服务宕机
+    lease-renewal-interval-in-seconds: 30 #表示 Eureka Client 向 Eureka Server 发送心跳的频率（默认 30 秒），如果在 lease-expiration-duration-in-seconds 指定的时间内未收到心跳，则移除该实例。心跳的间隔
+    instance-id: eureka-client #表示实例在注册中心注册的唯一ID。
     prefer-ip-address: true #true：实例以 IP 的形式注册 false：实例以机器 HOSTNAME 形式注册
 spring:
   application:

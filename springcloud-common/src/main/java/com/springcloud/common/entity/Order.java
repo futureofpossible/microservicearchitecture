@@ -1,9 +1,6 @@
-package com.springcloud.feign.entity;
+package com.springcloud.common.entity;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.io.Serializable;
 

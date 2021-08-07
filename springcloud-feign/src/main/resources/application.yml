@@ -5,11 +5,17 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/
 spring:
   application:
-    name: feign-client
+    name: springcloud-feign
 feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
   hystrix:
     enabled: true
   compression:
@@ -24,8 +30,12 @@ management:
     web:
       exposure:
         include: "*"
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "hystrix.stream"
 logging:
   level:
-    com.springcloud.feign.service.ProviderService: DEBUG
-hystrix:
-  comm
+    #com.springcloud.feign.service.PaymentService: DEBUG
+    com.springcloud.feign.service: DEBUG

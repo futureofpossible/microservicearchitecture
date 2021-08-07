@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 public class MyRule {
     @Bean
     public IRule iRule() {
-        return new RandomRule();
-        //return new RoundRobinRule();
+        //return new RandomRule();
+        return new RoundRobinRule();
         //return new WeightedResponseTimeRule();
         //return new ZoneAvoidanceRule();
         //return new BestAvailableRule();

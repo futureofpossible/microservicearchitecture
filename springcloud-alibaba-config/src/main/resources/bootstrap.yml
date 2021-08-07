@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: nacos-config-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #nacos注册中心地址
+      config:
+        server-addr: 127.0.0.1:8848 #nacos配置中心地址
+        file-extension: yaml
+        group: DEFAULT_GROUP
+        encode: UTF-8
+        timeout: 3000
+        enabled: true
+#        namespace: a13b64f5-e1b4-40da-9780-cdf1e7b34394
+#        {spring.application.name}-{spring.profiles.active}. {spring.cloud.nacos.config.file-extension}
+#        ${prefix}-${spring.profiles.active}.${file-extension}
+#        nacos-config-client-dev.yaml

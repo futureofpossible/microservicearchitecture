@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableDiscoveryClient
 @RestController
 @RefreshScope
-public class BusApplication {
+public class SpringCloudBusApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BusApplication.class,args);
+        SpringApplication.run(SpringCloudBusApplication.class,args);
     }
 }

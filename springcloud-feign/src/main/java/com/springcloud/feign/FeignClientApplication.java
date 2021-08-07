@@ -18,14 +18,19 @@ import org.springframework.context.annotation.Bean;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableFeignClients
-@EnableHystrix
-@EnableHystrixDashboard
-//@EnableCircuitBreaker
+//@EnableHystrix
+//@EnableHystrixDashboard
+@EnableCircuitBreaker
 //@EnableTurbine
 public class FeignClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(FeignClientApplication.class,args);
     }
+
+    /**
+     * 服务监控
+     * @return
+     */
     @Bean
     public ServletRegistrationBean getServlet() {
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
